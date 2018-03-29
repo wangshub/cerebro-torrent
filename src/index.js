@@ -1,7 +1,7 @@
 const icon = require('./icon.png');
 
 var torrentTitleGroup = [
-  'title1',
+  'title1', 
   'title2',
   'title3',
   'title4',
@@ -51,7 +51,7 @@ function btyunsouCrawler(kw, num, sortby) {
   }
   console.log('crawling ' + kw + ' num= ' + num + ' sortby=' + sortby);
   const domain = "http://www.btyunsou.co";
-  
+
 
 
 }
