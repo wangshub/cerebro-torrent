@@ -40,18 +40,45 @@ function generateDisplayObject(copyToClipboard, algoName, hashedValue) {
   };
 }
 
+function btyunsouCrawler(kw, num, sortby) {
+  /*
+     kw : 关键词
+     num: 搜索数量
+     num: 排序方式 0：按磁力时间排序，1：按磁力大小排序 2：按磁力热度排序
+  */
+  if (num < 0 || num > 200){
+    num = 10;
+  }
+  console.log('crawling ' + kw + ' num= ' + num + ' sortby=' + sortby);
+  const domain = "http://www.btyunsou.co";
+  
+
+
+}
 
 const plugin = ({term, display, actions}) => {
-  const cmdName = 'magnet';
-  const searchName = '战狼'; 
+  
+  // 对输入指令解析
+  const match = term.split(' ');
+  console.log('你输入的是：' + match);
 
-  if (cmdName === 'magnet') {
+  const cmdName = match[0];
+  const searchName = match[1]; 
+  const searchNum = -1;
+  const searchSortby = 0;
+
+  console.log(searchName.length);
+  if (cmdName === 'magnet' && searchName.length != 0) {
+    // 启动爬虫进行搜索
+    btyunsouCrawler(searchName, searchNum, searchSortby);
+
+    // 搜索结果进行展示
     display(
       generateDisplayObject(actions.copyToClipboard, searchName, '12345678')
     );
   }
   else {
-    console.log('not match');
+    console.log('magnet not match');
   }
 };
 
