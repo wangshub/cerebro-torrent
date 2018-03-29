@@ -2,9 +2,11 @@ const async = require('async');
 const fs = require('fs');
 const format = require('string-format');
 const icon = require('./icon.png');
+const request = require('request');
+// const axios = require('axios');
+const cheerio = require('cheerio');
 
 format.extend(String.prototype, {});
-// require('superagent-proxy')(superagent);
 
 var torrentTitleGroup = [
   'title1',
@@ -47,22 +49,24 @@ function generateDisplayObject(copyToClipboard, algoName, hashedValue) {
 var fetchUrl = function (url, callback) {
   // 注意延时
   var delay = parseInt((Math.random() * 30000000) % 500, 10);
+
+  // URL 编码
+  url = encodeURI(url)
   console.log('正在爬取：' + url);
-  // superagent
-  //     .get(url)
-  //     .set('User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0')
-  //     .retry(3)
-  //     .timeout({ response: 5000 })
-  //     .end(function(err, res) {
-  //       if (err) {
-  //         console.log(err.status);
-  //         return;
-  //       } 
-  //       else {
-  //         // 读取数据
-  //         console.log(res);
-  //       }
-  //     });  
+
+  request(url, function(error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the HTML.
+    try {
+      const $ = cheerio.load(body);
+      $("li.media")
+    } catch (error) {
+      console.log(error);
+    }
+  
+  
+  });
 
   setTimeout(function () {
     callback();
@@ -87,7 +91,7 @@ function btyunsouCrawler(kw, num, sortby) {
   var torrentUrls = [];
   for (let page = 0; page < pageNum; page++) {
     url = domain + '/search/{0}_ctime_{1}.html'.format(kw, page);
-    url.replace(' ', '%20');
+    url = url.replace(' ', '');
     console.log(url);
     torrentUrls.push(url);
   }
