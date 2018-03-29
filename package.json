@@ -2,8 +2,11 @@
   "name": "cerebro-torrent",
   "version": "0.1.0",
   "dependencies": {
+    "async": "^2.6.0",
     "cerebro-tools": "^0.1.8",
-    "cerebro-ui": "^0.0.16"
+    "cerebro-ui": "0.0.16",
+    "string-format": "^1.0.0",
+    "superagent": "^3.8.2"
   },
   "devDependencies": {
     "cerebro-scripts": "0.0.25"
