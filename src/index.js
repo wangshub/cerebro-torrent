@@ -24,14 +24,16 @@ function displayMsg(scope, value) {
 }
 
 // UI 显示函数
-function generateDisplayObject(copyToClipboard, algoName, hashedValue) {
+function generateDisplayObject(copyToClipboard, algoName) {
+  subtileStr = 'size: ' + algoName.size + ' heat:' + algoName.heat;
+  textStr = algoName.title + '\n' + 'fileSize: ' + algoName.size + '\n' + 'fileHeat: ' + algoName.heat + '\n'+ 'date: ' + algoName.time + '\n' + 'magnet: ' + algoName.link + '\n';
+
   return {
     icon,
-    title: algoName,
-    subtitle: hashedValue,
-    clipboard: hashedValue,
-    onSelect: (event) => copyToClipboard(hashedValue),
-    // onKeyDown: (event) => console.log(event),
+    title: algoName.title,
+    subtitle: subtileStr,
+    clipboard: algoName.link,
+    onSelect: (event) => copyToClipboard(algoName.link),
     getPreview: () => (
       <div
         style={{
@@ -41,7 +43,11 @@ function generateDisplayObject(copyToClipboard, algoName, hashedValue) {
         padding: '15px',
         boxSizing: 'border-box'
       }}>
-        {hashedValue}
+        {algoName.title}
+        <p> </p>
+        {'size: '}{algoName.size} {'heat: '}{algoName.heat}
+        <p> </p>
+        {algoName.link}
       </div>
     )
   };
@@ -167,7 +173,7 @@ const plugin = ({term, display, actions}) => {
     // display(generateDisplayObject(actions.copyToClipboard, '战狼2', '12345678'));
 
     jsonMagnets.forEach(function (magnet){
-      display(generateDisplayObject(actions.copyToClipboard, magnet.title, 'abcdefg'));
+      display(generateDisplayObject(actions.copyToClipboard, magnet));
     });
 
 
