@@ -1,6 +1,7 @@
 {
   "name": "cerebro-torrent",
   "version": "0.1.0",
+  "author": "wangshub <easternsloe@yeah.net>",
   "dependencies": {
     "async": "^2.6.0",
     "cerebro-tools": "^0.1.8",
