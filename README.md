@@ -33,6 +33,6 @@ Windows、Linux、MacOS
 
 ## 代码地址
 
-欢迎 `star ⭐️`  和 `fork 💫` 多提 Issue ！
+欢迎 `star ⭐️`  和 `fork 💫` 多提 Issue !
 [wangshub/cerebro-torrent](https://github.com/wangshub/cerebro-torrent)
 
