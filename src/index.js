@@ -5,17 +5,8 @@ const icon = require('./icon.png');
 const request = require('request');
 // const axios = require('axios');
 const cheerio = require('cheerio');
-
 format.extend(String.prototype, {});
 
-var torrentTitleGroup = [
-  'title1',
-  'title2',
-  'title3',
-  'title4',
-  'title5',
-  'title6'
-];
 
 var jsonMagnets = [];
 
@@ -26,7 +17,7 @@ function displayMsg(scope, value) {
 // UI 显示函数
 function generateDisplayObject(copyToClipboard, algoName) {
   subtileStr = 'size: ' + algoName.size + ' heat:' + algoName.heat;
-  textStr = algoName.title + '\n' + 'fileSize: ' + algoName.size + '\n' + 'fileHeat: ' + algoName.heat + '\n'+ 'date: ' + algoName.time + '\n' + 'magnet: ' + algoName.link + '\n';
+  textStr = algoName.title + '\nfileSize: ' + algoName.size + '\nfileHeat: ' + algoName.heat + '\ndate: ' + algoName.time + '\nmagnet: ' + algoName.link + '\n';
 
   return {
     icon,
@@ -44,9 +35,9 @@ function generateDisplayObject(copyToClipboard, algoName) {
         boxSizing: 'border-box'
       }}>
         {algoName.title}
-        <p> </p>
+        <p></p>
         {'size: '}{algoName.size} {'heat: '}{algoName.heat}
-        <p> </p>
+        <p></p>
         {algoName.link}
       </div>
     )
@@ -165,28 +156,12 @@ const plugin = ({term, display, actions}) => {
   }
 
   // 延时，不够优雅
-  setTimeout(function(){
-
+  setTimeout(function () {
     console.log(jsonMagnets);
-
-    // display(generateDisplayObject(actions.copyToClipboard, '战狼1', '12345678'));
-    // display(generateDisplayObject(actions.copyToClipboard, '战狼2', '12345678'));
-
-    jsonMagnets.forEach(function (magnet){
+    jsonMagnets.forEach(function (magnet) {
       display(generateDisplayObject(actions.copyToClipboard, magnet));
     });
-
-
   }, 1500);
-
-  //   var timeout = setTimeout(function() {     console.log('延时的数据：');
-  // console.log(jsonMagnets); }, 2000); // 对输入指令解析 const match = term.split(' ');
-  // console.log('你输入的是：' + match); const cmdName = match[0]; const searchName =
-  // match[1]; const searchNum = -1; const searchSortby = 0;
-  // console.log(searchName.length); if (cmdName === 'magnet' && searchName.length
-  // != 0) {   // 启动爬虫进行搜索 btyunsouCrawler(searchName, searchNum, searchSortby);
-  // // 搜索结果进行展示 display(    generateDisplayObject(actions.copyToClipboard,
-  // searchName, '12345678') ); } else {   console.log('magnet not match'); }
 };
 
 module.exports = {
