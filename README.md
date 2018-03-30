@@ -2,7 +2,7 @@
 
 > 什么？看个片儿还要打开网页慢慢找?！
 
-![截图](./resource/screen.png)
+![截图](./resource/screenshot.png)
 
 ## 安装步骤
 
