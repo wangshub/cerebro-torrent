@@ -30,3 +30,9 @@ Windows、Linux、MacOS
 - 解析输入的指令；
 - 利用 async 和 request 库并发爬取网站；
 - 嵌入 html 对爬取结果进行显示；
+
+## 代码地址
+
+欢迎 `star ⭐️`  和 `fork 💫`，多提 Issue ！
+[wangshub/cerebro-torrent](https://github.com/wangshub/cerebro-torrent)
+
