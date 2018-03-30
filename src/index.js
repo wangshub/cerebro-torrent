@@ -17,6 +17,8 @@ var torrentTitleGroup = [
   'title6'
 ];
 
+var jsonMagnets = [];
+
 function displayMsg(scope, value) {
   scope.display({title: value});
 }
@@ -54,18 +56,41 @@ var fetchUrl = function (url, callback) {
   url = encodeURI(url)
   console.log('正在爬取：' + url);
 
-  request(url, function(error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML.
+  request(url, function (error, response, body) {
+    // console.log('error:', error); // Print the error if one occurred
+    // console.log('statusCode:', response && response.statusCode); // Print the
+    // response status code if a response was received console.log('body:', body);
+    // // Print the HTML.
     try {
       const $ = cheerio.load(body);
-      $("li.media")
+      $('div.media-body').each(function (i, elem) {
+        title = $(this)
+          .find('a.title')
+          .text()
+          .replace(/\s+/g, '');
+        // console.log(title);
+        time = $(this)
+          .find('span.label.label-success')
+          .text();
+        // console.log(time);
+        size = $(this)
+          .find('span.label.label-warning')
+          .text();
+        // console.log(size);
+        heat = $(this)
+          .find('span.label.label-primary')
+          .text();
+        // console.log(heat);
+        link = ($(this).html()).match('<!--<span class="media-down"><a href="(.*?)"><i class="icon-download"><\/i> 磁力下载' +
+            '<\/a>')[1];
+        // console.log(link);
+        jsonMagnets.push({'title': title, 'time': time, 'size': size, 'heat': heat, 'link': link})
+      });
+
     } catch (error) {
       console.log(error);
     }
-  
-  
+
   });
 
   setTimeout(function () {
@@ -92,7 +117,6 @@ function btyunsouCrawler(kw, num, sortby) {
   for (let page = 0; page < pageNum; page++) {
     url = domain + '/search/{0}_ctime_{1}.html'.format(kw, page);
     url = url.replace(' ', '');
-    console.log(url);
     torrentUrls.push(url);
   }
   // console.log(torrentUrls); 并发
@@ -100,13 +124,17 @@ function btyunsouCrawler(kw, num, sortby) {
     .mapLimit(torrentUrls, 4, function (url, callback) {
       fetchUrl(url, callback);
     }, function (err, result) {
-      console.log('final:');
-      console.log(result);
+      // console.log('final:'); console.log(result);
+      console.log('最后爬取到数据是：');
+      console.log(jsonMagnets);
+
     });
 
 }
 
 const plugin = ({term, display, actions}) => {
+
+  jsonMagnets = []
 
   // 输入检测
   if (!term.match(/^magnet /)) {
@@ -131,13 +159,14 @@ const plugin = ({term, display, actions}) => {
     console.log(error)
   }
 
-  // // 对输入指令解析 const match = term.split(' '); console.log('你输入的是：' + match);
-  // const cmdName = match[0]; const searchName = match[1]; const searchNum = -1;
-  // const searchSortby = 0; console.log(searchName.length); if (cmdName ===
-  // 'magnet' && searchName.length != 0) {   // 启动爬虫进行搜索
-  // btyunsouCrawler(searchName, searchNum, searchSortby);   // 搜索结果进行展示 display(
-  //    generateDisplayObject(actions.copyToClipboard, searchName, '12345678')
-  // ); } else {   console.log('magnet not match'); }
+  //   var timeout = setTimeout(function() {     console.log('延时的数据：');
+  // console.log(jsonMagnets); }, 2000); // 对输入指令解析 const match = term.split(' ');
+  // console.log('你输入的是：' + match); const cmdName = match[0]; const searchName =
+  // match[1]; const searchNum = -1; const searchSortby = 0;
+  // console.log(searchName.length); if (cmdName === 'magnet' && searchName.length
+  // != 0) {   // 启动爬虫进行搜索 btyunsouCrawler(searchName, searchNum, searchSortby);
+  // // 搜索结果进行展示 display(    generateDisplayObject(actions.copyToClipboard,
+  // searchName, '12345678') ); } else {   console.log('magnet not match'); }
 };
 
 module.exports = {
