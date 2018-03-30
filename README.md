@@ -11,6 +11,8 @@
 - `Clone` 代码到本地，并执行
     ```shell
     git clone https://github.com/wangshub/cerebro-torrent.git
+    cd cerebro-torrent
+    yarn install
     ```
 - 将 `cerebro-torrent` 文件夹拷贝或者软链接到 `Cerebro` 的 `node_module` 文件夹下；
 - 启动 `Cerebro`，输入 `magnets 葫芦娃`，然后敲击 `空格`；
