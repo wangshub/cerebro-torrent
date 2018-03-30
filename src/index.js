@@ -153,11 +153,25 @@ const plugin = ({term, display, actions}) => {
     const searchName = match;
     const searchNum = 100;
     const searchSortby = 0;
-
     btyunsouCrawler(searchName, searchNum, searchSortby);
   } catch (error) {
     console.log(error)
   }
+
+  // 延时，不够优雅
+  setTimeout(function(){
+
+    console.log(jsonMagnets);
+
+    // display(generateDisplayObject(actions.copyToClipboard, '战狼1', '12345678'));
+    // display(generateDisplayObject(actions.copyToClipboard, '战狼2', '12345678'));
+
+    jsonMagnets.forEach(function (magnet){
+      display(generateDisplayObject(actions.copyToClipboard, magnet.title, 'abcdefg'));
+    });
+
+
+  }, 1500);
 
   //   var timeout = setTimeout(function() {     console.log('延时的数据：');
   // console.log(jsonMagnets); }, 2000); // 对输入指令解析 const match = term.split(' ');
