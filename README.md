@@ -18,6 +18,14 @@ Windows、Linux、MacOS
 
 ## 安装步骤
 
+### Cerebro 内安装插件
+
+- `ctrl-space` 启动 Cerebro
+- 输入 `plugins torrent`
+- 点击 `install`
+
+### 源码安装
+
 - 确保安装好了 [Cerebro](https://github.com/KELiON/cerebro)
 
 - `Clone` 代码到本地，并执行
