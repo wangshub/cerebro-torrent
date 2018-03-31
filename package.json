@@ -1,7 +1,13 @@
 {
   "name": "cerebro-torrent",
   "version": "0.1.0",
-  "author": "wangshub <easternsloe@yeah.net>",
+  "description": "Cerebro plugin to search torrents",
+  "repository": "wangshub/cerebro-torrent",
+  "author": {
+    "name": "wangshub",
+    "email": "easternsloe@yeah.net",
+    "url": "https://www.thinkhard.tech"
+  },
   "dependencies": {
     "async": "^2.6.0",
     "cerebro-tools": "^0.1.8",
@@ -17,7 +23,9 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "torrent",
+    "movie"
   ],
   "scripts": {
     "start": "cerebro-scripts start",
