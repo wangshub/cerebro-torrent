@@ -8,7 +8,7 @@
 
 Windows、Linux、MacOS
 
-![截图](./resource/screenshot.png)
+![截图](./resource/magnet_demo_2M.gif)
 
 ## 使用
 
