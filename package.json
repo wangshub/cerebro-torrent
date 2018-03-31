@@ -1,6 +1,6 @@
 {
   "name": "cerebro-torrent",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Cerebro plugin to search torrents",
   "license": "MIT",
   "repository": "wangshub/cerebro-torrent",

@@ -1,5 +1,6 @@
-# Cerebro 插件之电影磁力搜索器
+# Cerebro 插件之电影磁力搜索神器
 
+> Cerebro plugin to search torrent of movies
 > 什么？看个片儿还要打开网页慢慢找?！
 
 这周在学 Node.js, 看了 [@carlos-wong](https://github.com/carlos-wong) 推荐的[《Eloquent JavaScript》](https://eloquentjavascript.net) 这本书的前几章，就抑制不住想写点什么练手。[Cerebro](https://github.com/KELiON/cerebro) 是一个跨平台的快速启动工具（同时支持 Windows、MacOs、Linux），并且可以用 Javascript 定制各种自己喜欢的插件。所以做了一个**电影磁力搜索器**的插件。
