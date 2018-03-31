@@ -10,6 +10,12 @@ Windows、Linux、MacOS
 
 ![截图](./resource/screenshot.png)
 
+## 使用
+
+在 Cerebro 对话框中输入电影名称，使用键盘上/下按键选择电影，敲击 `回车` ,磁力链接就会自动复制到剪贴板。
+
+- `magnet [电影名称][空格]`
+
 ## 安装步骤
 
 - 确保安装好了 [Cerebro](https://github.com/KELiON/cerebro)
@@ -29,7 +35,8 @@ Windows、Linux、MacOS
 
 - 解析输入的指令；
 - 利用 async 和 request 库并发爬取网站；
-- 嵌入 html 对爬取结果进行显示；
+- 使用 cheerio 解析网页节点；
+- 嵌入一段 html 对爬取结果进行显示；
 
 ## 代码地址
 

@@ -1,7 +1,8 @@
 {
   "name": "cerebro-torrent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cerebro plugin to search torrents",
+  "license": "MIT",
   "repository": "wangshub/cerebro-torrent",
   "author": {
     "name": "wangshub",
@@ -22,10 +23,10 @@
   },
   "main": "dist/index.js",
   "keywords": [
-    "cerebro",
-    "cerebro-plugin",
     "torrent",
-    "movie"
+    "movie",
+    "cerebro",
+    "cerebro-plugin"
   ],
   "scripts": {
     "start": "cerebro-scripts start",
